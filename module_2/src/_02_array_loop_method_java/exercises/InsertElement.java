@@ -38,14 +38,24 @@ public class InsertElement {
         System.out.println("\nEnter the key you want to insert to list");
         int key = scanner.nextInt();
         // nhập vị trí muốn chèn
-        System.out.println("Enter the index of list you want to insert");
-        int pos = scanner.nextInt();
+        boolean check = false;
+        int pos ;
+        do {
+            System.out.println("Enter the index of list you want to insert");
+             pos = scanner.nextInt();
+            if (pos < 0 || pos >= arr.length){
+                System.out.println("index must be greater than or equal zero or less than " + arr.length);
+            }else {
+                check = true;
+            }
+        }while (!check);
+
         // dời các phần tử sau vị trí muốn chèn
         for (int j = number; j > pos - 1; j--) {
             arrNew[j] = arrNew[j - 1];
         }
         // gán số muốn chèn vào vị trí muốn chèn
-        arrNew[pos - 1] = key;
+        arrNew[pos] = key;
         //in ra mảng mới sau khi chèn
         System.out.println("Before insert");
         for (int num :
