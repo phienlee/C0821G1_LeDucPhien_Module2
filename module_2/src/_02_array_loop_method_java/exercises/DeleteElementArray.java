@@ -39,13 +39,15 @@ public class DeleteElementArray {
         if (pos == -1) {
             System.out.println("Not found Please try again");
         } else {
+            int temp;
             for (int j = pos; j < n - 1; j++) {
-                int temp;
                 temp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = temp;
             }
+            arr[arr.length - 1] = 0;
         }
+
         return n - 1;
     }
 
