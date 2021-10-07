@@ -37,11 +37,11 @@ public class Fan {
         return FAST;
     }
 
-    public static boolean isON() {
+    public static boolean isON(boolean on) {
         return ON;
     }
 
-    public static boolean isOFF() {
+    public static boolean isOFF(boolean off) {
         return OFF;
     }
 
@@ -53,7 +53,7 @@ public class Fan {
         return speed;
     }
 
-    public boolean isOn() {
+    public boolean isOn(boolean on) {
         return isOn;
     }
 
@@ -76,17 +76,15 @@ public class Fan {
     public void setColor(String color) {
         this.color = color;
     }
-
-    @Override
-    public String toString() {
-        if (isOn){
-            return "Fan is ON {"+
+    public String toString1() {
+        if (isOn) {
+            return "Fan is ON {" +
                     "speed = " + speed +
                     ", radius = " + radius +
                     ", color = '" + color + '\'' +
                     '}';
-        }else {
-            return "Fan is OFF {"+
+        } else {
+            return "Fan is OFF {" +
                     "radius = " + radius +
                     ", color = '" + color + '\'' +
                     '}';
@@ -97,14 +95,14 @@ public class Fan {
         Fan fan1 = new Fan();
         Fan fan2 = new Fan();
         fan1.setOn(ON);
+        fan1.setSpeed(FAST);
         fan1.setRadius(10);
         fan1.setColor("Yellow");
-        fan1.setSpeed(FAST);
+        System.out.println("Fan 1 info"+fan1.toString1());
         fan2.setOn(OFF);
+        fan2.setSpeed(MEDIUM);
         fan2.setRadius(5);
         fan2.setColor("Blue");
-        fan2.setSpeed(MEDIUM);
-        System.out.println("Fan 1 info "+fan1.toString());
-        System.out.println("Fan 2 info "+fan2.toString());
+        System.out.println("Fan 2 info"+fan2.toString1());
     }
 }
