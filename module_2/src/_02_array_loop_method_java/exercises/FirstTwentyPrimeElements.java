@@ -1,6 +1,6 @@
 package _02_array_loop_method_java.exercises;
 
-public class NumberPrime {
+public class FirstTwentyPrimeElements {
     public static void main(String[] args) {
         int i = 2;
         int count = 0;

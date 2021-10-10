@@ -16,6 +16,7 @@ public class Student {
         this.className = className;
     }
 
+    @Override
     public String toString() {
         return "Student{" +
                 "name='" + name + '\'' +
