@@ -2,21 +2,21 @@ package _05_inheritance.exercise.point_moveablepoint;
 
 import _05_inheritance.exercise.point2d_point3d.Point2D;
 
-public class MovablesPoint extends Point2D {
+public class MovablePoint extends Point2D {
     private float xSpeed, ySpeed;
 
-    public MovablesPoint() {
+    public MovablePoint() {
         super();
         this.xSpeed = 0.0f;
         this.ySpeed = 0.0f;
     }
 
-    public MovablesPoint(float xSpeed, float ySpeed) {
+    public MovablePoint(float xSpeed, float ySpeed) {
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
     }
 
-    public MovablesPoint(float x, float y, float xSpeed, float ySpeed) {
+    public MovablePoint(float x, float y, float xSpeed, float ySpeed) {
         super(x, y);
         this.xSpeed = xSpeed;
         this.ySpeed = ySpeed;
@@ -47,7 +47,7 @@ public class MovablesPoint extends Point2D {
         return new float[]{getX(), getY(), getXSpeed(), getYSpeed()};
     }
 
-    public MovablesPoint move() {
+    public MovablePoint move() {
         setX(getX() + xSpeed);
         setY(getY() + ySpeed);
         return this;
@@ -55,7 +55,7 @@ public class MovablesPoint extends Point2D {
 
     @Override
     public String toString() {
-        return "MoveablePoint{" +
+        return "MovablePoint{" +
                 "x=" + getX() +
                 ", y=" + getY() +
                 ", xSpeed=" + xSpeed +

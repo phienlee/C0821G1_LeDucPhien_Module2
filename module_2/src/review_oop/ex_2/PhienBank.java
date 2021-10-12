@@ -52,18 +52,19 @@ public class PhienBank {
         return accountBalance += money;
     }
 
-    public double  withdrawalFromAccount (double moneyWithdrawal){
+    public double withdrawalFromAccount(double moneyWithdrawal) {
         return accountBalance -= moneyWithdrawal;
     }
 
-    public void getExpired(){
-         this.accountBalance = this.accountBalance + this.accountBalance * RATE;
+    public void getExpired() {
+        this.accountBalance = this.accountBalance + this.accountBalance * RATE;
     }
 
     public void transferToOther(PhienBank bankAccount, double moneyTransfer) {
         bankAccount.accountBalance = bankAccount.accountBalance + moneyTransfer;
         this.accountBalance = this.accountBalance - moneyTransfer - FEE_TRANSFER;
     }
+
     @Override
     public String toString() {
         return "PhienBank{" +
