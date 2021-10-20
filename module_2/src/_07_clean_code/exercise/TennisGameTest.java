@@ -1,6 +1,4 @@
 package _07_clean_code.exercise;
-
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -13,9 +11,9 @@ import static org.junit.Assert.*;
 @RunWith(Parameterized.class)
 public class TennisGameTest {
 
-    private int playerFirstName;
-    private int playerSecondName;
-    private String expectedScore;
+    private  int playerFirstName;
+    private  int playerSecondName;
+    private  String expectedScore;
 
     public TennisGameTest(int playerFirstName, int playerSecondName, String expectedScore) {
         this.playerFirstName = playerFirstName;
