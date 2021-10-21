@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class StudentTest {
     public static List<Student> students = new ArrayList<>();
-    public static Scanner scanner = new Scanner(System.in);
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
         students.add(new Student("SV001", "Student1", "Đà Nẵng", 8));
@@ -50,10 +50,10 @@ public class StudentTest {
                 case 3:
                     System.out.println("Nhập mã Sinh viên cần chỉnh sửa");
                     studentCodeSearch = scanner.nextLine();
-                    if (findStudentByCode(studentCodeSearch) != null){
+                    if (findStudentByCode(studentCodeSearch) != null) {
                         editStudent(studentCodeSearch);
                         showStudentList();
-                    }else {
+                    } else {
                         System.out.println("Không có Sinh viên trong danh sách");
                     }
 
@@ -107,11 +107,12 @@ public class StudentTest {
 //        return lastStudentCode;
 //    }
 
-    public static void editStudent(String studentCode){
+    public static void editStudent(String studentCode) {
         Student student = findStudentByCode(studentCode);
         String nameStudent;
         String address;
-        double point;System.out.println("Nhập tên sinh viên");
+        double point;
+        System.out.println("Nhập tên sinh viên");
         nameStudent = scanner.nextLine();
         System.out.println("Nhập địa chỉ sinh viên");
         address = scanner.nextLine();

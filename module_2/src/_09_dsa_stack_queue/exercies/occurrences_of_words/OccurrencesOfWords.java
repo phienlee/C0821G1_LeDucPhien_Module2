@@ -1,8 +1,8 @@
 package _09_dsa_stack_queue.exercies.occurrences_of_words;
 
+import java.util.HashMap;
 import java.util.Map;
-import java.util.Scanner;
-import java.util.TreeMap;
+import java.util.Scanner;;
 
 public class OccurrencesOfWords {
     public static final char SPACE = ' ';
@@ -10,7 +10,7 @@ public class OccurrencesOfWords {
     public static final char BREAK_LINE = '\n';
 
     public static Map<String, Integer> countWords(String input) {
-        Map<String, Integer> wordMap = new TreeMap<String, Integer>();
+        Map<String, Integer> wordMap = new HashMap<>();
         if (input == null) {
             return wordMap;
         }
@@ -52,7 +52,6 @@ public class OccurrencesOfWords {
         for (String key : wordMap.keySet()) {
             System.out.print(key + " " + wordMap.get(key) + " times" + "\n");
         }
-
     }
 }
 
