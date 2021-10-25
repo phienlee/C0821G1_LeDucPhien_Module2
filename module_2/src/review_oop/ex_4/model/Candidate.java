@@ -91,7 +91,7 @@ public abstract class Candidate {
 
     @Override
     public String toString() {
-        return "Candidate{" +
+        return "Candidate:" +
                 "idCandidate=" + idCandidate +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
@@ -100,6 +100,6 @@ public abstract class Candidate {
                 ", phone=" + phone +
                 ", email='" + email + '\'' +
                 ", candidateType=" + candidateType +
-                '}';
+                ", ";
     }
 }
