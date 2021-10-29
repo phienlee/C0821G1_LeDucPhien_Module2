@@ -4,11 +4,10 @@ import java.util.Scanner;
 import java.util.regex.Pattern;
 
 public class ClassroomName {
-     ;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Pattern pattern = Pattern.compile("^[CAP]{1}\\d{4}[GHIKLM]{1}$");
+        Pattern pattern = Pattern.compile("^[CAP]\\d{4}[GHIKLM]$");
         while (true) {
             System.out.println("Enter classroom name");
             String string = scanner.nextLine();
