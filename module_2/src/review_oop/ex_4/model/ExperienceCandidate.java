@@ -18,6 +18,13 @@ public class ExperienceCandidate extends Candidate {
         this.proKill = proKill;
     }
 
+    public ExperienceCandidate(String[] strings) {
+        super(Integer.parseInt(strings[0]), strings[1], strings[2], Integer.parseInt(strings[3]), strings[4], strings[5], strings[6], Integer.parseInt(strings[7]));
+        this.expInYear = Integer.parseInt(strings[8]);
+        this.proKill = strings[9];
+
+    }
+
     public int getExpInYear() {
         return expInYear;
     }
@@ -36,6 +43,11 @@ public class ExperienceCandidate extends Candidate {
 
     @Override
     public String toString() {
+        return super.toString() + "," + expInYear + "," + proKill;
+    }
+
+    @Override
+    public String showInfo() {
         return "ExperienceCandidate{" + super.toString() +
                 "expInYear=" + expInYear +
                 ", proKill='" + proKill + '\'' +

@@ -19,6 +19,7 @@ public class Controller {
     public static void main(String[] args) {
         Controller controller = new Controller();
         controller.displayMainMenu();
+
     }
 
     private void displayMainMenu() {
@@ -171,7 +172,7 @@ public class Controller {
         List<Intern> internList = internService.getAll();
         System.out.println("FRESHER LIST");
         for (Intern intern : internList) {
-            System.out.println(intern);
+            System.out.println(intern.showInfo());
         }
     }
 
@@ -338,8 +339,10 @@ public class Controller {
     private void showAllFreshers() {
         List<Fresher> fresherList = fresherService.getAll();
         System.out.println("FRESHER LIST");
+        int count = 1;
         for (Fresher fresher : fresherList) {
-            System.out.println(fresher);
+            System.out.println(count + ": " + fresher.showInfo());
+            count++;
         }
     }
 
@@ -484,7 +487,7 @@ public class Controller {
         List<ExperienceCandidate> experienceCandidateList = experiencesCandidateService.getAll();
         System.out.println("EXPERIENCE LIST");
         for (ExperienceCandidate experienceCandidate : experienceCandidateList) {
-            System.out.println(experienceCandidate);
+            System.out.println(experienceCandidate.showInfo());
         }
     }
 
@@ -519,7 +522,7 @@ public class Controller {
                 0,
                 expInYear,
                 proSkill
-                );
+        );
         experiencesCandidateService.addCandidate(experienceCandidate);
         showAllExperience();
     }

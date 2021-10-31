@@ -1,5 +1,6 @@
 package review_oop.ex_4.repository;
 
+import review_oop.ex_4.common.ReadAndWriteFile;
 import review_oop.ex_4.model.ExperienceCandidate;
 import review_oop.ex_4.model.Fresher;
 
@@ -8,64 +9,52 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ExperienceRepository implements ICandidateRepository<ExperienceCandidate> {
-    private static List<ExperienceCandidate> experienceCandidateList = new ArrayList<>(Arrays.asList(
-            new ExperienceCandidate(1, "Duy", "Le",
-                    1999, "Sai Gon", "09099999987",
-                    "Dule1@gmail.com", 0,
-                    5, "C++"),
-            new ExperienceCandidate(2, "Vy", "Le",
-                    1992, "Da Nang", "09099999897",
-                    "Dule2@gmail.com", 0,
-                    3, "CodegymDaNang"),
-            new ExperienceCandidate(3, "Du3", "Nguyen",
-                    1994, "Ha Noi", "09099995555",
-                    "Dule3@gmail.com", 0, 2
-                    , "CodegymDaNang"),
-            new ExperienceCandidate(4, "Duy Duc", "Nguyen",
-                    1995, "Da Nang", "09099996666",
-                    "Dule4@gmail.com", 0, 7
-                    , "CodegymDaNang"),
-            new ExperienceCandidate(5, "Du5", "Pham",
-                    1989, "Da Nang", "09099996669",
-                    "Dule6@gmail.com", 0, 8
-                    , "CodegymDaNang"),
-            new ExperienceCandidate(6, "Du6", "Phan",
-                    2000, "Da Nang", "0909459999",
-                    "Dule9@gmail.com", 0, 4
-                    , "CodegymDaNang"),
-            new ExperienceCandidate(7, "Phie0n7", "Ho",
-                    1998, "Da Nang", "0909996799",
-                    "Dule1@gmail.com", 0, 1
-                    , "CodegymDaNang")
-    ));
+    ReadAndWriteFile readAndWriteFile = new ReadAndWriteFile();
+
 
     @Override
-    public List getAll() {
+    public List<ExperienceCandidate> getAll() {
+        List<ExperienceCandidate> experienceCandidateList = new ArrayList<>();
+        List<String[]> list = readAndWriteFile.readFromFile("experience.csv");
+        for (String[] strings : list) {
+            ExperienceCandidate experienceCandidate = new ExperienceCandidate(strings);
+            experienceCandidateList.add(experienceCandidate);
+        }
         return experienceCandidateList;
     }
 
     @Override
     public void add(ExperienceCandidate experienceCandidate) {
+        List<ExperienceCandidate> experienceCandidateList = getAll();
         experienceCandidateList.add(experienceCandidate);
+        readAndWriteFile.writeToFile("experience.csv", experienceCandidateList, false);
     }
 
     @Override
     public void delete(int id) {
-       ExperienceCandidate experienceCandidate = findById(id);
-       experienceCandidateList.remove(experienceCandidate);
+        List<ExperienceCandidate> experienceCandidateList = getAll();
+        for (int i = 0; i < experienceCandidateList.size(); i++) {
+            if (experienceCandidateList.get(i).getIdCandidate() == id) {
+                experienceCandidateList.remove(i);
+            }
+        }
+        readAndWriteFile.writeToFile("experience.csv", experienceCandidateList, false);
     }
 
     @Override
     public void update(int id, ExperienceCandidate experienceCandidate) {
+        List<ExperienceCandidate> experienceCandidateList = getAll();
         for (int i = 0; i < experienceCandidateList.size(); i++) {
             if (experienceCandidateList.get(i).getIdCandidate() == id) {
                 experienceCandidateList.set(i, experienceCandidate);
             }
         }
+        readAndWriteFile.writeToFile("experience.csv", experienceCandidateList, false);
     }
 
     @Override
     public ExperienceCandidate findById(int id) {
+        List<ExperienceCandidate> experienceCandidateList = getAll();
         ExperienceCandidate experienceCandidate = null;
         for (int i = 0; i < experienceCandidateList.size(); i++) {
             if (experienceCandidateList.get(i).getIdCandidate() == id) {
@@ -78,9 +67,10 @@ public class ExperienceRepository implements ICandidateRepository<ExperienceCand
     @Override
     public List<ExperienceCandidate> search(String keyword) {
         List<ExperienceCandidate> searchList = new ArrayList<>();
-        for (int i = 0; i < experienceCandidateList.size(); i++) {
-            if (experienceCandidateList.get(i).getLastName().contains(keyword) || experienceCandidateList.get(i).getFirstName().contains(keyword)) {
-                searchList.add(experienceCandidateList.get(i));
+        List<ExperienceCandidate> experienceCandidates = getAll();
+        for (int i = 0; i < experienceCandidates.size(); i++) {
+            if (experienceCandidates.get(i).getLastName().contains(keyword) || experienceCandidates.get(i).getFirstName().contains(keyword)) {
+                searchList.add(experienceCandidates.get(i));
             }
         }
         return searchList;

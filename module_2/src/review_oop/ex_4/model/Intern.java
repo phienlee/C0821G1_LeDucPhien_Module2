@@ -20,6 +20,12 @@ public class Intern extends Candidate {
         this.semester = semester;
         this.universityName = universityName;
     }
+    public Intern(String[] strings) {
+        super(Integer.parseInt(strings[0]), strings[1], strings[2], Integer.parseInt(strings[3]), strings[4], strings[5], strings[6], Integer.parseInt(strings[7]));
+        this.majors = strings[8];
+        this.semester = strings[9];
+        this.universityName = strings[10];
+    }
 
     public String getMajors() {
         return majors;
@@ -46,11 +52,16 @@ public class Intern extends Candidate {
     }
 
     @Override
-    public String toString() {
+    public String showInfo() {
         return "Intern{" + super.toString() +
                 "majors='" + majors + '\'' +
                 ", semester='" + semester + '\'' +
                 ", universityName='" + universityName + '\'' +
                 '}';
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + "," + majors + "," + semester + "," + universityName;
     }
 }

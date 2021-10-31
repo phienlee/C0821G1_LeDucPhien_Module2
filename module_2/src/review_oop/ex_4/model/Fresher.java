@@ -21,6 +21,13 @@ public class Fresher extends Candidate {
         this.education = education;
     }
 
+    public Fresher(String[] strings) {
+        super(Integer.parseInt(strings[0]), strings[1], strings[2], Integer.parseInt(strings[3]), strings[4], strings[5], strings[6], Integer.parseInt(strings[7]));
+        this.graduationDate = strings[8];
+        this.graduationRank = strings[9];
+        this.education = strings[10];
+    }
+
     public String getGraduationDate() {
         return graduationDate;
     }
@@ -47,7 +54,12 @@ public class Fresher extends Candidate {
 
     @Override
     public String toString() {
-        return "Fresher{" + super.toString() +
+        return super.toString() + "," + graduationDate + "," + graduationRank + "," + education;
+    }
+
+    @Override
+    public String showInfo() {
+        return "Fresher{" + super.showInfo() +
                 "graduationDate='" + graduationDate + '\'' +
                 ", graduationRank='" + graduationRank + '\'' +
                 ", education='" + education + '\'' +
